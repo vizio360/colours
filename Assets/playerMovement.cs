@@ -3,16 +3,7 @@ using System.Collections;
 
 public class playerMovement : MonoBehaviour {
 	public float speed = 10.0f;
-	public ParticleSystem ps;
-	
-	void OnTriggerEnter (Collider other) {
-		ps.Play();
-	}
 
-	void OnTriggerExit (Collider other) {
-		ps.Stop();
-	}
-	
 	// Use this for initialization
 	void Start () {
 	
@@ -28,7 +19,5 @@ public class playerMovement : MonoBehaviour {
 		if (x == 0.0f) return;
 		x *= Time.deltaTime;
 		transform.Translate(x * speed, 0.0f, 0.0f);
-
-	
 	}
 }
