@@ -1,8 +1,6 @@
 using UnityEngine;
 using System.Collections;
 
-
-
 public class GUI : MonoBehaviour {
 	
 	private GUIStyle customButton;
@@ -31,17 +29,21 @@ public class GUI : MonoBehaviour {
 		var spaceship = GameObject.Find("Spaceship");
 		GUILayout.BeginArea(new Rect(0,Screen.height-buttonsHeight,Screen.width,buttonsHeight));
 		GUILayout.BeginHorizontal();
+		CollisionColorCheck c = spaceship.GetComponent<CollisionColorCheck>();
 		if(CreateButton(CustomColor.red))
 		{
-			spaceship.renderer.material.color = CustomColor.red;
+			if (!c.colliding)
+				spaceship.renderer.material.color = CustomColor.red;
 		}
 		if(CreateButton(CustomColor.yellow))
 		{
-			spaceship.renderer.material.color = CustomColor.yellow;
+			if (!c.colliding)
+				spaceship.renderer.material.color = CustomColor.yellow;
 		}
 		if(CreateButton(CustomColor.blue))
 		{
-			spaceship.renderer.material.color = CustomColor.blue;
+			if (!c.colliding)
+				spaceship.renderer.material.color = CustomColor.blue;
 		}
 		GUILayout.EndHorizontal();
 		GUILayout.EndArea();

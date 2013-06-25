@@ -3,6 +3,7 @@ using System.Collections;
 
 public class scroll : MonoBehaviour {
 	
+	public static float speed = 0.05f;
 	// Use this for initialization
 	void Start () {
 		Init();
@@ -11,7 +12,8 @@ public class scroll : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 p = this.transform.position;
-		var y = p.y - 0.1f;
+		var y = p.y - scroll.speed;
+		print (scroll.speed);
 		if(y < -11)
 		{
 			Init ();

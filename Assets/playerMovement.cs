@@ -11,6 +11,10 @@ public class playerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool esc = Input.GetKeyDown(KeyCode.Escape);
+		if (esc) { 
+			Application.Quit(); 
+		}
 		bool left = Input.GetKey(KeyCode.LeftArrow);
 		bool right = Input.GetKey(KeyCode.RightArrow);
 		float x = 0.0f;

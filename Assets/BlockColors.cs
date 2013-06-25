@@ -19,6 +19,4 @@ public class BlockColors : MonoBehaviour {
 		this.transform.FindChild("target").renderer.material.color = target;
 		this.transform.FindChild("trigger").renderer.material.color = trigger;
 	}
-	
-	
 }

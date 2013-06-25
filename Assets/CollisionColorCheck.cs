@@ -6,11 +6,14 @@ public class CollisionColorCheck : MonoBehaviour {
 
 	public ParticleSystem ps;
 	
+	public bool colliding = false;
+	
 	private Color combinedColor;
 	private Color originalColor;
 	
 	void OnTriggerEnter (Collider other) {
 		if(other.name == "trigger") {
+			colliding = true;
 			Color trigger = other.transform.renderer.material.color;
 			originalColor = renderer.material.color;
 			IDictionary<Color, Color> d = Colors.colors[trigger];
@@ -25,6 +28,10 @@ public class CollisionColorCheck : MonoBehaviour {
 			if (target != combinedColor)
 			{
 				ps.Play();
+				scroll.speed -= 0.01f;
+			}
+			else{
+				scroll.speed += 0.01f;	
 			}
 		}
 	}
@@ -34,6 +41,7 @@ public class CollisionColorCheck : MonoBehaviour {
 		if(other.name == "target") {
 			renderer.material.color = originalColor;
 			ps.Stop();
+			colliding = false;
 		}
 	}
 	
