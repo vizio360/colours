@@ -6,10 +6,11 @@ using System.Collections;
 public class GUI : MonoBehaviour {
 	
 	private GUIStyle customButton;
-	private int buttonsHeight = 10	;
+	private int buttonsHeight = 60;
 	// Use this for initialization
 	void Start () {
 		customButton = new GUIStyle();
+		print(Colors.getRandomPrimaryColor());
 	}
 	
 	// Update is called once per frame
