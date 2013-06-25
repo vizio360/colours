@@ -1,0 +1,19 @@
+{
+  "name": "coloursUnity",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vizio360/colours.git"
+  },
+  "author": "Simone Vicentini",
+  "license": "BSD",
+  "gitHead": "89d580d8ab734c0d54dc78c34bf721c64654c7d9",
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
