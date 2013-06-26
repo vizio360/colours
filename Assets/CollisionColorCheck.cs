@@ -8,38 +8,54 @@ public class CollisionColorCheck : MonoBehaviour {
 	
 	public bool colliding = false;
 	
-	private Color combinedColor;
-	private Color originalColor;
+	private VertexPainter vp;
 	
+	private Color combinedColor;
+	private Color _prevColor;
+	private Color _currentColor;
+	public Color currentColor
+	{
+		get { return _currentColor; }
+		set { 
+			_currentColor = value;
+			vp.changeVertexesColor(_currentColor);
+		}
+	}
+		
+	void Start () {
+		vp = this.GetComponent<VertexPainter>();
+	}
+		
 	void OnTriggerEnter (Collider other) {
 		if(other.name == "trigger") {
 			colliding = true;
-			Color trigger = other.transform.renderer.material.color;
-			originalColor = renderer.material.color;
+			
+			Color trigger = other.transform.parent.GetComponent<BlockColors>().triggerColor;
+			
 			IDictionary<Color, Color> d = Colors.colors[trigger];
-			combinedColor = originalColor;
-			if (!d.ContainsKey(originalColor)) return;
-			combinedColor = d[originalColor];
-			if(combinedColor == null) return;
-			renderer.material.color = combinedColor;
+			_prevColor = currentColor;
+			combinedColor = currentColor;
+			if (!d.ContainsKey(currentColor)) return;
+			combinedColor = d[currentColor];
+			currentColor = combinedColor;
 		}
 		if(other.name == "target") {
-			Color target = other.transform.renderer.material.color;
+			Color target = other.transform.parent.GetComponent<BlockColors>().targetColor;
 			if (target != combinedColor)
 			{
 				ps.Play();
-				scroll.speed -= 0.01f;
+				scroll.speed -= 0.5f;
+				
 			}
 			else{
-				scroll.speed += 0.01f;	
+				scroll.speed += 0.5f;	
 			}
 		}
 	}
 
 	void OnTriggerExit (Collider other) {
-		
 		if(other.name == "target") {
-			renderer.material.color = originalColor;
+			currentColor = _prevColor;
 			ps.Stop();
 			colliding = false;
 		}

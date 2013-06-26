@@ -3,36 +3,37 @@ using System.Collections;
 
 public class scroll : MonoBehaviour {
 	
-	public static float speed = 0.05f;
+	public static float speed = 5.0f;
+	
+	private BlockColors block;
 	// Use this for initialization
 	void Start () {
+		block = GetComponent<BlockColors>();
 		Init();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Vector3 p = this.transform.position;
-		var y = p.y - scroll.speed;
-		print (scroll.speed);
-		if(y < -11)
+		if(p.y < -11.0f)
 		{
-			Init ();
+			Init();
 		}
 		else
 		{
-			updatePosition(y);
+			updatePosition(scroll.speed);
 		}
 	}
 	
 	void Init() {
-		BlockColors b = GetComponent<BlockColors>();
-		b.RandomiseColors();
-		updatePosition(11.0f);
+		block.RandomiseColors();
+		Vector3 p = this.transform.position;
+		Vector3 newP = new Vector3(p.x, 11.0f, p.z);
+		this.transform.position = newP;
 	}
 	
-	void updatePosition(float y) {
-		Vector3 p = this.transform.position;
-		Vector3 newP = new Vector3(p.x, y, p.z);
-		this.transform.position = newP;
+	void updatePosition(float delta) {
+		Vector3 newP = new Vector3(0.0f, -delta * Time.deltaTime, 0.0f);
+		this.transform.Translate(newP);
 	}
 }

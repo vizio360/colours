@@ -2,21 +2,21 @@ using UnityEngine;
 using System.Collections;
 
 public class BlockColors : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
+	VertexPainter triggerVP;
+	VertexPainter targetVP;
+	public Color triggerColor;
+	public Color targetColor;
+ 
 	public void RandomiseColors(){
-		Color trigger = Colors.getRandomPrimaryColor();	
-		Color target = Colors.getRandomCombinedColorFor(trigger);
-		this.transform.FindChild("target").renderer.material.color = target;
-		this.transform.FindChild("trigger").renderer.material.color = trigger;
+		Transform trigger = this.transform.FindChild("trigger");
+		Transform target = this.transform.FindChild("target");
+		triggerVP = trigger.GetComponent<VertexPainter>();
+		targetVP = target.GetComponent<VertexPainter>();
+		triggerColor = Colors.getRandomPrimaryColor();	
+		targetColor = Colors.getRandomCombinedColorFor(triggerColor);
+		triggerVP.changeVertexesColor(triggerColor);
+		targetVP.changeVertexesColor(targetColor);
 	}
+
 }

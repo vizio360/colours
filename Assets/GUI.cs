@@ -5,15 +5,14 @@ public class GUI : MonoBehaviour {
 	
 	private GUIStyle customButton;
 	private int buttonsHeight = 60;
+	
+	private GameObject spaceShip;
+	private CollisionColorCheck checker;
 	// Use this for initialization
 	void Start () {
+		spaceShip = GameObject.Find("Spaceship");
+		checker = spaceShip.GetComponent<CollisionColorCheck>();
 		customButton = new GUIStyle();
-		print(Colors.getRandomPrimaryColor());
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 	
 	private bool CreateButton(Color color) {
@@ -26,24 +25,23 @@ public class GUI : MonoBehaviour {
 
 	void OnGUI()
 	{
-		var spaceship = GameObject.Find("Spaceship");
 		GUILayout.BeginArea(new Rect(0,Screen.height-buttonsHeight,Screen.width,buttonsHeight));
 		GUILayout.BeginHorizontal();
-		CollisionColorCheck c = spaceship.GetComponent<CollisionColorCheck>();
+		
 		if(CreateButton(CustomColor.red))
 		{
-			if (!c.colliding)
-				spaceship.renderer.material.color = CustomColor.red;
+			if (!checker.colliding)
+				checker.currentColor = CustomColor.red;
 		}
 		if(CreateButton(CustomColor.yellow))
 		{
-			if (!c.colliding)
-				spaceship.renderer.material.color = CustomColor.yellow;
+			if (!checker.colliding)
+				checker.currentColor = CustomColor.yellow;
 		}
 		if(CreateButton(CustomColor.blue))
 		{
-			if (!c.colliding)
-				spaceship.renderer.material.color = CustomColor.blue;
+			if (!checker.colliding)
+				checker.currentColor = CustomColor.blue;
 		}
 		GUILayout.EndHorizontal();
 		GUILayout.EndArea();
