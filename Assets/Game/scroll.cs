@@ -3,9 +3,15 @@ using System.Collections;
 
 public class scroll : MonoBehaviour {
 	
-	public static float speed = 5.0f;
+	public static float startingSpeed = 5.0f;
+	public static float speed = startingSpeed;
 	
 	private BlockColors block;
+	
+	void Awake () {
+		scroll.speed = scroll.startingSpeed;
+	}
+	
 	// Use this for initialization
 	void Start () {
 		block = GetComponent<BlockColors>();

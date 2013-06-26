@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class GUI : MonoBehaviour {
+public class UserControls : MonoBehaviour {
 	
 	private GUIStyle customButton;
-	private int buttonsHeight = 60;
+	private int buttonsHeight = 90;
 	
 	private GameObject spaceShip;
 	private CollisionColorCheck checker;
@@ -25,6 +25,9 @@ public class GUI : MonoBehaviour {
 
 	void OnGUI()
 	{
+		
+		GUI.Label(new Rect(Screen.width-150, 0, 150, 50), "Current Speed: "+scroll.speed);
+		
 		GUILayout.BeginArea(new Rect(0,Screen.height-buttonsHeight,Screen.width,buttonsHeight));
 		GUILayout.BeginHorizontal();
 		
