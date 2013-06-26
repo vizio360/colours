@@ -23,7 +23,9 @@ public class CollisionColorCheck : MonoBehaviour {
 	}
 		
 	void Start () {
-		vp = this.GetComponent<VertexPainter>();
+		Transform t = this.transform.FindChild("shipTriangle");
+		vp = t.GetComponent<VertexPainter>();
+		currentColor = Colors.getRandomPrimaryColor();
 	}
 		
 	void OnTriggerEnter (Collider other) {
@@ -45,7 +47,6 @@ public class CollisionColorCheck : MonoBehaviour {
 			{
 				ps.Play();
 				scroll.speed -= 0.5f;
-				
 			}
 			else{
 				scroll.speed += 0.5f;	
