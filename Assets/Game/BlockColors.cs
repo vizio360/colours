@@ -3,8 +3,8 @@ using System.Collections;
 
 public class BlockColors : MonoBehaviour {
 	
-	VertexPainter triggerVP;
-	VertexPainter targetVP;
+	private VertexPainter triggerVP;
+	private VertexPainter targetVP;
 	public Color triggerColor;
 	public Color targetColor;
  
