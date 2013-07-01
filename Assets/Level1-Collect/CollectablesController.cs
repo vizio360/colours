@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class CollectablesController : MonoBehaviour {
 	
+	public GameObject collectable;
+	
 	public int numberOfCollectables = 10;
 	
 	protected IList<Transform> poolOfCollectables;
@@ -15,6 +17,7 @@ public class CollectablesController : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+	
 		poolOfCollectables = new List<Transform>(numberOfCollectables);
 		GameObject c;
 		for (int i=0; i < numberOfCollectables ; i++)
@@ -43,13 +46,6 @@ public class CollectablesController : MonoBehaviour {
 			isSpawning = true;
 			return;
 		}
-		if (curTime + spawnInterval > Time.time)
-		{
-			
-		}
-		
-		
-		
 	
 	}
 	

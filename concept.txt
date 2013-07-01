@@ -1,0 +1,21 @@
+Colours
+
+
+You control a spaceship
+
+A black hole is sucking all the colours from the sunlight, you need to recollect enough colours to re-establish equilibrium.
+
+You will also need to create colours which have already been lost (purple, green and orange)
+
+
+
+Level 1
+
+Collect all the colours listed
+
+
+Level 2
+
+???
+shoot primary colour onto other primary colours to create secondary colours or shoot them to secondary colours to extract the other primary colour.
+
