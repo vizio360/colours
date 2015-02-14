@@ -8,7 +8,7 @@ public class MainMenuGUI : MonoBehaviour {
 		GUILayout.BeginVertical();
 		
 		if(GUILayout.Button ("Start", GUILayout.Height(50))) {
-			Application.LoadLevel("mainScene");
+			Application.LoadLevel(1);
 		}
 		if(GUILayout.Button ("Quit", GUILayout.Height(50))) {
 			Application.Quit();

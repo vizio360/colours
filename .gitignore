@@ -1,7 +1,7 @@
 .DS_Store
 Temp/*
 Library/*
-Build/*
+Builds/*
 builds
 #ignoring pidb, they are just code completion caching data according to:
 # http://stackoverflow.com/questions/1...ops-pidb-files
